@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    @apply bg-white text-black font-mono;
+    /* [#f2f2ea] */
+}
+
+.navbar__item {
+    @apply text-lg text-[#333333] font-bold hover:text-customGreen; /* px-5 py-4 bg-green-600 rounded-md shadow-md hover:bg-green-700 */
+}
