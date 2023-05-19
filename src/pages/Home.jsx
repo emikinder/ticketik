@@ -1,45 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import imgHome from "../assets/images/stats.jpg";
 import { faFutbol } from "@fortawesome/free-solid-svg-icons";
+import imgHome from "../assets/images/stats.jpg";
 
 export const Home = () => {
     return (
         <>
-            <section className="h-screen flex items-center">
-                <div className="flex justify-center">
-                    <div className="w-10/12 flex">
-                        <div className="w-2/5 flex justify-center">
-                            {/* <img className="absolute" src={sports} alt="" width={300} /> */}
-                            <img
-                                className=""
-                                src={imgHome}
-                                alt=""
-                                width={400}
-                            />
-                        </div>
-                        <div className="w-3/5 flex items-center">
-                            {/* <TypeAnimation
-                                cursor={true}
-                                sequence={[
-                                    `Take your ${test} passion for sports to the next level.`,
-                                    2000,
-                                ]}
-                                speed={180}
-                                className="text-6xl"
-                            /> */}
-                            <h1 className="text-6xl">
-                                Take your{" "}
-                                <span className="text-customGreen">
-                                    passion
-                                </span>{" "}
-                                for{" "}
-                                <span className="text-customGreen">sports</span>{" "}
-                                to the next level.
-                            </h1>
-                        </div>
+            <section className="flex justify-center items-center h-screen">
+                {/* <div className="md:flex md:justify-center"> */}
+                <div className="w-full px-10 mt-10 md:flex md:w-10/12">
+                    <div className="flex justify-center px-5 pt-10 md:w-2/5">
+                        <img src={imgHome} alt="" width={400} />
+                    </div>
+                    <div className="flex justify-center items-center md:w-3/5">
+                        <p className="w-10/12 text-center text-3xl md:text-left md:text-4xl lg:text-6xl">
+                            Take your{" "}
+                            <span className="text-customGreen">passion</span>{" "}
+                            for <span className="text-customGreen">sports</span>{" "}
+                            to the next level.
+                        </p>
                     </div>
                 </div>
+                {/* </div> */}
             </section>
+
             <section className="h-screen">
                 <div className="flex justify-center">
                     <div className="w-10/12 flex">
