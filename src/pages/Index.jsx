@@ -1,7 +1,6 @@
 import { Home } from "./Home";
-import { Results } from "./Results";
-import { Sports } from "./Sports";
-import { Services } from "./Services";
+import { Tickets } from "./Tickets";
+import { Live } from "./Live";
 import { Contact } from "./Contact";
 import { NotFound } from "./NotFound";
-export { Home, Results, Sports, Services, Contact, NotFound };
+export { Home, Tickets, Live, Contact, NotFound };

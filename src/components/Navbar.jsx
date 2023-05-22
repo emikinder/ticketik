@@ -19,7 +19,7 @@ export const Navbar = () => {
                         />
                     </Link>
                 </div>
-                <NavbarItems styles="flex justify-between w-7/12" />
+                <NavbarItems styles="flex justify-between w-1/3" />
             </div>
 
             {/* mobile */}
@@ -47,24 +47,15 @@ export const Navbar = () => {
 const NavbarItems = ({ styles }) => {
     return (
         <ul className={styles}>
-            <li className="pt-2">
-                <Link className="navbar__item" to="/">
-                    Home
+            <li className="pt-2 flex items-center">
+                <Link className="navbar__item" to="/live">
+                    LIVE
                 </Link>
+                <div className="ml-2 animate-ping w-2 h-2 rounded-full bg-red-500"></div>
             </li>
             <li className="pt-2">
-                <Link className="navbar__item" to="/results">
-                    Results
-                </Link>
-            </li>
-            <li className="pt-2">
-                <Link className="navbar__item" to="/sports">
-                    Sports
-                </Link>
-            </li>
-            <li className="pt-2">
-                <Link className="navbar__item" to="/services">
-                    Services
+                <Link className="navbar__item" to="/tickets">
+                    Tickets
                 </Link>
             </li>
             <li className="pt-2">
