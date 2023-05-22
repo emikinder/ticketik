@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faInstagram,
-    faTwitter,
-    faRebel,
-} from "@fortawesome/free-brands-svg-icons";
+import { faRebel } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
@@ -24,20 +20,6 @@ export const Navbar = () => {
                     </Link>
                 </div>
                 <NavbarItems styles="flex justify-between w-7/12" />
-                <div className="flex justify-between w-20 mt-0">
-                    <Link to="/">
-                        <FontAwesomeIcon
-                            className="w-7 h-7 hover:text-customGreen"
-                            icon={faInstagram}
-                        />
-                    </Link>
-                    <Link to="/">
-                        <FontAwesomeIcon
-                            className="w-7 h-7 hover:text-customGreen"
-                            icon={faTwitter}
-                        />
-                    </Link>
-                </div>
             </div>
 
             {/* mobile */}

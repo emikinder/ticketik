@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFutbol } from "@fortawesome/free-solid-svg-icons";
-import imgHome from "../assets/images/stats.jpg";
 
 export const Home = () => {
     return (
@@ -8,9 +7,8 @@ export const Home = () => {
             <section className="flex justify-center items-center h-screen">
                 {/* <div className="md:flex md:justify-center"> */}
                 <div className="w-full px-10 mt-10 md:flex md:w-10/12">
-                    <div className="flex justify-center px-5 pt-10 md:w-2/5">
-                        <img src={imgHome} alt="" width={400} />
-                    </div>
+                    {/* <div className="flex justify-center px-5 pt-10 md:w-2/5">
+                    </div> */}
                     <div className="flex justify-center items-center md:w-3/5">
                         <p className="w-10/12 text-center text-3xl md:text-left md:text-4xl lg:text-6xl">
                             Take your{" "}
