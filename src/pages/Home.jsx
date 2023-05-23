@@ -3,6 +3,7 @@ import { faFutbol } from "@fortawesome/free-solid-svg-icons";
 import { LEAGUES_DATA } from "../assets/data/FootballData";
 import OG from "../assets/images/OG.png";
 import Table from "../components/Table";
+import { FootballTable } from "../components/FootballTable";
 
 export const Home = () => {
     // const league = LEAGUES_DATA[0];
@@ -30,15 +31,16 @@ export const Home = () => {
                                     className="hover:animate-spin"
                                     icon={faFutbol}
                                 />{" "}
-                                Top 5{" "}
+                                Top 3{" "}
                                 <span className="text-customGreen">
                                     Football
                                 </span>{" "}
                                 Leagues
                             </h2>
-                            <div className="flex flex-wrap justify-between items-center">
+                            <div className="items-center mt-6">
                                 {LEAGUES_DATA.map((league, i) => (
-                                    <Table key={i} league={league} />
+                                    // <Table key={i} league={league} />
+                                    <FootballTable key={i} league={league} />
                                 ))}
                             </div>
                         </div>
