@@ -4,7 +4,7 @@ import { LEAGUES_DATA } from "../assets/data/FootballData";
 import OG from "../assets/images/OG.png";
 import NBA from "../assets/images/nba.png";
 import MUNDIAL from "../assets/images/2026.jpg";
-import Table from "../components/Table";
+// import Table from "../components/Table";
 import { FootballTable } from "../components/FootballTable";
 
 export const Home = () => {
