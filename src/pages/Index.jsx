@@ -1,6 +1,8 @@
 import { Home } from "./Home";
-import { Tickets } from "./Tickets";
-import { Live } from "./Live";
-import { Contact } from "./Contact";
+import { Art } from "./Art";
+import { Music } from "./Music";
+import { Sports } from "./Sports";
 import { NotFound } from "./NotFound";
-export { Home, Tickets, Live, Contact, NotFound };
+import { Specials } from "./Specials";
+import { Login } from "./Login";
+export { Home, Login, Art, Music, Sports, Specials, NotFound };

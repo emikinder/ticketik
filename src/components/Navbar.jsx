@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRebel } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+    faBars,
+    faX,
+    faStar,
+    // faMagnifyingGlass,
+    faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -13,31 +18,37 @@ export const Navbar = () => {
             <div className="max-[640px]:hidden max-[1000px]:w-full sm:hidden md:flex justify-between items-center w-10/12 px-10 py-8">
                 <div className="flex justify-between">
                     <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                        <FontAwesomeIcon
-                            className="w-12 h-12 hover:text-customGreen"
-                            icon={faRebel}
-                        />
+                        <span className="text-3xl hover:text-customGreen">
+                            <FontAwesomeIcon icon={faStar} /> <b>TICKET</b>
+                            VIBE
+                        </span>
                     </Link>
                 </div>
                 <NavbarItems styles="flex justify-between w-1/3" />
+                <LoginSection />
             </div>
 
             {/* mobile */}
             <div className="px-10 py-8 md:hidden">
                 <div className="flex justify-between">
                     <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                        <FontAwesomeIcon className="w-8 h-8" icon={faRebel} />
+                        <FontAwesomeIcon className="w-8 h-8" icon={faStar} />
                     </Link>
                     <div className="flex items-center">
+                        <LoginSection />
                         <button onClick={() => setNavBarOpen(!navBarOpen)}>
                             <FontAwesomeIcon
-                                className="w-5 h-5"
+                                className="w-5 h-5 ml-5"
                                 icon={navBarOpen ? faX : faBars}
                             />
                         </button>
                     </div>
                 </div>
-                {navBarOpen && <NavbarItems />}
+                {navBarOpen && (
+                    <>
+                        <NavbarItems />
+                    </>
+                )}
             </div>
         </nav>
     );
@@ -47,22 +58,45 @@ export const Navbar = () => {
 const NavbarItems = ({ styles }) => {
     return (
         <ul className={styles}>
-            <li className="pt-2 flex items-center">
+            {/* <li className="pt-2 flex items-center">
                 <Link className="navbar__item" to="/live">
                     LIVE
                 </Link>
                 <div className="ml-2 animate-ping w-2 h-2 rounded-full bg-red-500"></div>
-            </li>
+            </li> */}
             <li className="pt-2">
-                <Link className="navbar__item" to="/tickets">
-                    Tickets
+                <Link className="navbar__item" to="/music">
+                    Music
                 </Link>
             </li>
             <li className="pt-2">
-                <Link className="navbar__item" to="/contact">
-                    Contact us
+                <Link className="navbar__item" to="/sports">
+                    Sports
+                </Link>
+            </li>
+            <li className="pt-2">
+                <Link className="navbar__item" to="/art">
+                    Art
+                </Link>
+            </li>
+            <li className="pt-2">
+                <Link className="navbar__item" to="/specials">
+                    Specials
                 </Link>
             </li>
         </ul>
+    );
+};
+
+const LoginSection = () => {
+    return (
+        <Link to="/login" className="hover:text-customGreen">
+            {/* <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <input
+                type="text"
+                className="border rounded h-10 pl-2 ml-3 mr-10 border-customGreen"
+            /> */}
+            <FontAwesomeIcon icon={faUser} />
+        </Link>
     );
 };

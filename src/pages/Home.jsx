@@ -49,8 +49,7 @@ export const Home = () => {
                         <div className="md:w-6/12">
                             <div className="w-full px-8 py-4 text-white bg-customGreen md:rounded">
                                 <p className="text-3xl">
-                                    All Football Matches Fixtures & Tips for
-                                    Tomorrow
+                                    All eSports Events here!
                                 </p>
                                 <p className="mt-3">
                                     Get all the information about tomorrows
