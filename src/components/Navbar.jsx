@@ -13,9 +13,9 @@ export const Navbar = () => {
     const [navBarOpen, setNavBarOpen] = useState(false);
 
     return (
-        <nav className="fixed backdrop-blur-lg w-full md:h-auto md:flex md:justify-center">
+        <nav className="fixed backdrop-blur-lg w-full md:h-auto md:flex md:justify-center z-10">
             {/* desktop */}
-            <div className="max-[640px]:hidden max-[1000px]:w-full sm:hidden md:flex justify-between items-center w-10/12 px-10 py-8">
+            <div className="max-[640px]:hidden max-[1000px]:w-full sm:hidden md:flex justify-between items-center w-10/12 px-10 py-7">
                 <div className="flex justify-between">
                     <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                         <span className="text-3xl hover:text-customGreen">
@@ -29,7 +29,7 @@ export const Navbar = () => {
             </div>
 
             {/* mobile */}
-            <div className="px-10 py-8 md:hidden">
+            <div className="px-10 py-4 md:hidden">
                 <div className="flex justify-between">
                     <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                         <FontAwesomeIcon className="w-8 h-8" icon={faStar} />

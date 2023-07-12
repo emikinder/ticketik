@@ -1,50 +1,38 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFutbol } from "@fortawesome/free-solid-svg-icons";
-import { LEAGUES_DATA } from "../assets/data/FootballData";
-import OG from "../assets/images/OG.png";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NBA from "../assets/images/nba.png";
-import MUNDIAL from "../assets/images/2026.jpg";
-// import Table from "../components/Table";
-import { FootballTable } from "../components/FootballTable";
+import CSGO from "../assets/images/eslcologne.png";
+// import { FootballTable } from "../components/FootballTable";
 
 export const Home = () => {
-    // const league = LEAGUES_DATA[0];
     return (
         <>
-            <section className="flex justify-center items-center h-[80vh]">
-                <div className="w-full px-10 mt-10 md:flex md:px-0 md:w-10/12">
-                    <div className="items-center md:w-8/12">
-                        <h1 className="w-full text-center text-3xl md:w-full md:text-left md:text-4xl lg:text-6xl">
-                            Take your{" "}
-                            <span className="text-customGreen">passion</span>{" "}
-                            for <span className="text-customGreen">sports</span>{" "}
-                            to the next level.
-                        </h1>
-                    </div>
+            <section className="w-full h-[50vh] md:h-[90vh] pt-[4.5rem] md:pt-24">
+                <div
+                    className="md:h-[60vh] flex justify-center md:items-center overflow-hidden"
+                    onClick={() => console.log("onclick")}
+                >
+                    <img
+                        className=""
+                        src={CSGO}
+                        alt="Counter Strike Global Offensive"
+                    />
+                </div>
+                <div className="w-full bg-customGreen py-4 flex justify-center items-center">
+                    <input
+                        className="w-5/6 md:w-3/6 rounded-md px-3 h-8 text-sm"
+                        type="text"
+                        placeholder="Find your favorite artist or event..."
+                    />
                 </div>
             </section>
-
             <section className="md:h-screen">
                 <div className="flex justify-center">
                     <div className="md:flex md:w-10/12">
                         <div className="md:w-6/12">
                             <h2 className="text-2xl text-center md:text-left">
-                                <FontAwesomeIcon
-                                    className="hover:animate-spin"
-                                    icon={faFutbol}
-                                />{" "}
-                                Top 3{" "}
-                                <span className="text-customGreen">
-                                    Football
-                                </span>{" "}
-                                Leagues
+                                <b>Top</b> <span>Selling</span>
                             </h2>
-                            <div className="items-center mt-6 flex justify-center md:block md:justify-normal">
-                                {LEAGUES_DATA.map((league, i) => (
-                                    // <Table key={i} league={league} />
-                                    <FootballTable key={i} league={league} />
-                                ))}
-                            </div>
+                            <div className="items-center mt-6 flex justify-center md:block md:justify-normal"></div>
                         </div>
                         <div className="md:w-6/12">
                             <div className="w-full px-8 py-4 text-white bg-customGreen md:rounded">
@@ -52,10 +40,10 @@ export const Home = () => {
                                     All eSports Events here!
                                 </p>
                                 <p className="mt-3">
-                                    Get all the information about tomorrows
-                                    matches from more than 300 leagues
-                                    worldwide. We offer pre-match tips, results,
-                                    and more to help you decide your next bet.
+                                    Experience the exhilaration of live gaming
+                                    tournaments and events, secure your spot,
+                                    and join the passionate eSports community.
+                                    Get your tickets now!
                                 </p>
                             </div>
                             <div className="mt-8 mb-8 w-1/2 flex justify-between items-start">
@@ -64,16 +52,16 @@ export const Home = () => {
                                     src={NBA}
                                     alt="NBA"
                                 />
-                                <img
+                                {/* <img
                                     className="border rounded-md w-10/12"
-                                    src={OG}
+                                    src={}
                                     alt="Olympic Games"
                                 />
                                 <img
                                     className="border rounded-md w-10/12"
-                                    src={MUNDIAL}
+                                    src={}
                                     alt="Mundial"
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>
