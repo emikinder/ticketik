@@ -15,8 +15,8 @@ export const Navbar = () => {
     return (
         <nav className="fixed backdrop-blur-lg w-full md:h-auto md:flex md:justify-center z-10">
             {/* desktop */}
-            <div className="max-[640px]:hidden max-[1000px]:w-full sm:hidden md:flex justify-between items-center w-10/12 px-10 py-7">
-                <div className="flex justify-between">
+            <div className="max-[640px]:hidden max-[1000px]:w-full sm:hidden md:flex justify-between items-center w-10/12 py-7">
+                <div className="w-1/5 flex justify-between">
                     <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                         <span className="text-3xl hover:text-customGreen">
                             <FontAwesomeIcon icon={faStar} /> <b>TICKET</b>
@@ -24,7 +24,7 @@ export const Navbar = () => {
                         </span>
                     </Link>
                 </div>
-                <NavbarItems styles="flex justify-between w-1/3" />
+                <NavbarItems styles="flex justify-between w-2/5" />
                 <LoginSection />
             </div>
 
@@ -65,6 +65,11 @@ const NavbarItems = ({ styles }) => {
                 <div className="ml-2 animate-ping w-2 h-2 rounded-full bg-red-500"></div>
             </li> */}
             <li className="pt-2">
+                <Link className="navbar__item" to="/">
+                    Home
+                </Link>
+            </li>
+            <li className="pt-2">
                 <Link className="navbar__item" to="/music">
                     Music
                 </Link>
@@ -90,7 +95,7 @@ const NavbarItems = ({ styles }) => {
 
 const LoginSection = () => {
     return (
-        <Link to="/login" className="hover:text-customGreen">
+        <Link to="/login" className="md:w-1/5 md:text-right hover:text-customGreen">
             {/* <FontAwesomeIcon icon={faMagnifyingGlass} />
             <input
                 type="text"
