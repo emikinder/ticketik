@@ -25,13 +25,13 @@ export const Home = () => {
                     />
                 </div>
             </section>
-            <section className="md:h-screen flex justify-center">
+            <section className="flex justify-center">
                 <div className="md:flex md:w-10/12 justify-between">
                     <div className="md:w-5/12">
                         <h2 className="text-2xl text-center md:text-left">
                             <b>Top</b> <span>Selling</span>
                         </h2>
-                        <div className="items-center mt-6 flex justify-center md:block md:justify-normal">
+                        <div className="mt-4">
                             {TOP_SELLING_DATA.map((event, i) => (
                                 <TopSelligCard event={event} key={i} />
                             ))}
@@ -73,10 +73,22 @@ export const Home = () => {
 
 const TopSelligCard = ({ event }) => {
     return (
-        <div className="w-full rounded border">
-            <img src={event.img} className="h-full" />
-            {event.date}
-            {event.title}
-        </div>
+        <>
+            <div
+                className="md:mb-6 md:h-[40vh] flex md:items-center overflow-hidden"
+                onClick={() => console.log("onclick")}
+            >
+                <div className="absolute text-white bg-customGreen">
+                    <p className="">{event.title}</p>
+                    <p>{event.date}</p>
+                    <p>{event.location}</p>
+                </div>
+                <img
+                    className=""
+                    src={event.img}
+                    alt="Counter Strike Global Offensive"
+                />
+            </div>
+        </>
     );
 };
