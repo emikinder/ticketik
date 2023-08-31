@@ -1,13 +1,7 @@
 /* eslint-disable react/prop-types */
 export const FootballTable = ({ league }) => {
     return (
-        <div className="w-10/12 bg-customGreen text-white px-6 py-4 mb-2 rounded-md">
-            {/* <div className="flex items-center">
-                <div className="w-5 h-10 mr-2 flex items-center">
-                    <img src={league.flag} alt={league.name} />
-                </div>
-                <h3 className="text-xl">{league.name}</h3>
-            </div> */}
+        <div className="w-10/12 bg-purple text-white px-6 py-4 mb-2 rounded-md">
             <div>
                 {league.teams.map((team, i) => {
                     if (team.position === 1) {
