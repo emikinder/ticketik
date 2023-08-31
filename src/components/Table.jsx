@@ -9,7 +9,7 @@ const Table = ({ league }) => {
                         <h2 className="ml-3 text-xl">{league.name}</h2>
                     </div>
                     <table className="w-full mt-[1px]">
-                        <thead className="bg-customGreen">
+                        <thead className="bg-purple">
                             <tr className="text-white">
                                 <th className="text-left">No.</th>
                                 <th className="text-left">Team</th>

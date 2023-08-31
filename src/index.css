@@ -8,5 +8,5 @@
 }
 
 .navbar__item {
-    @apply text-lg text-[#333333] font-bold hover:text-customGreen; /* px-5 py-4 bg-green-600 rounded-md shadow-md hover:bg-green-700 */
+    @apply text-lg text-[#333333] font-bold hover:text-purple; /* px-5 py-4 bg-green-600 rounded-md shadow-md hover:bg-green-700 */
 }
