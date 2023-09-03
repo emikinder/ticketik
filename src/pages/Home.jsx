@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Input } from "@nextui-org/react";
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import CSGO from "../assets/images/eslcologne.png";
-import { getEvents } from "../api/EventsAPI";
+import CardSimple from "../components/CardSimple";
+import CardFull from "../components/CardFull";
+import { Image } from "@nextui-org/react";
+
+import { useFetch } from "../api/useFetch";
 
 export const Home = () => {
-    const [events, setEvents] = useState();
-    const fetchTopEvents = async () => {
-        const { events } = await getEvents();
-        console.log(events);
-        setEvents(events);
-    };
+    const { data, loading, error } = useFetch();
 
-    useEffect(() => {
-        fetchTopEvents();
-    }, []);
-
+    error && <p>{error}</p>;
+    loading && <p>Loading...</p>;
     return (
         <>
             <section className="w-full">
@@ -25,10 +21,12 @@ export const Home = () => {
                     className="md:h-[60vh] flex justify-center md:items-center overflow-hidden"
                     onClick={() => console.log("onclick")}
                 >
-                    <img
-                        className=""
+                    <Image
                         src={CSGO}
                         alt="Counter Strike Global Offensive"
+                        width="100%"
+                        layout="responsive"
+                        radius="none"
                     />
                 </div>
                 <div className="w-full bg-purple py-4 flex justify-center items-center">
@@ -46,11 +44,20 @@ export const Home = () => {
                         <b>Top</b> <span>Selling</span>
                     </h2>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
-                        <TopSelligCards events={events} />
+                        {data &&
+                            data.events.slice(0, 4).map((event, i) => (
+                                <CardSimple
+                                    key={i}
+                                    location={event.venue.display_location}
+                                    date={event.datetime_local}
+                                    name={event.performers[0].short_name}
+                                    image={event.performers[0].image}
+                                />
+                            ))}
                     </div>
                 </section>
                 <section className="w-full md:w-1/2 mt-10">
-                    <div className="bg-purple text-white px-5 py-4 rounded-xl">
+                    <div className="bg-purple text-white px-5 py-4 md:rounded-xl">
                         <p className="text-3xl">All eSports Events here!</p>
                         <p className="mt-3">
                             Experience the exhilaration of live gaming
@@ -59,67 +66,20 @@ export const Home = () => {
                             now!
                         </p>
                     </div>
-                    <div className="flex justify-center md:justify-start gap-3 mt-2">
-                        <TopSelligCardsFull events={events} />
+                    <div className="flex flex-wrap justify-center md:justify-between mt-2">
+                        {data &&
+                            data.events.slice(4, 7).map((event, i) => (
+                                <CardFull
+                                    key={i}
+                                    location={event.venue.display_location}
+                                    date={event.datetime_local}
+                                    name={event.performers[0].short_name}
+                                    image={event.performers[0].image}
+                                />
+                            ))}
                     </div>
                 </section>
             </section>
         </>
     );
-};
-
-const TopSelligCards = ({ events }) => {
-    return events?.slice(0, 4).map((event, i) => (
-        <Card
-            className="py-4"
-            key={i}
-        >
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start w-[300px]">
-                <p className="text-tiny uppercase font-bold">
-                    {event.venue.display_location}
-                </p>
-                <small className="text-default-500">
-                    {event.datetime_local}
-                </small>
-                <h4 className="font-bold text-large">
-                    {event.performers[0].short_name}
-                </h4>
-            </CardHeader>
-            <CardBody className="overflow-visible py-2 justify-end">
-                <Image
-                    isZoomed
-                    alt="Card background"
-                    className="object-fill rounded-xl"
-                    src={event.performers[0].image}
-                    width={300}
-                    height={200}
-                />
-            </CardBody>
-        </Card>
-    ));
-};
-
-const TopSelligCardsFull = ({ events }) => {
-    return events?.slice(4, 7).map((event, i) => (
-        <Card
-            className="col-span-12 sm:col-span-4"
-            key={i}
-        >
-            <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                <p className="text-tiny text-white/60 uppercase font-bold">
-                {event.venue.display_location}
-                </p>
-                <h4 className="text-white font-medium text-large">
-                    {event.performers[0].short_name}
-                </h4>
-            </CardHeader>
-            <Image
-                removeWrapper
-                isZoomed
-                alt="Card background"
-                className="z-0 w-full h-full object-cover"
-                src={event.performers[0].image}
-            />
-        </Card>
-    ));
 };
