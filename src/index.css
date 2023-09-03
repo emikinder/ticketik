@@ -7,6 +7,11 @@
     /* [#f2f2ea] */
 }
 
+::selection {
+    background: #6622cc;
+    color: white
+}
+
 .navbar__item {
     @apply text-lg text-[#333333] font-bold hover:text-purple; /* px-5 py-4 bg-green-600 rounded-md shadow-md hover:bg-green-700 */
 }

@@ -1,17 +1,23 @@
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Input } from "@nextui-org/react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
-
-// import NBA from "../assets/images/nba.png";
 import CSGO from "../assets/images/eslcologne.png";
-
-import {
-    TOP_SELLING_DATA,
-    TOP_SELLING_DATA_2,
-} from "../assets/data/TopSellingData";
+import { getEvents } from "../api/EventsAPI";
 
 export const Home = () => {
+    const [events, setEvents] = useState();
+    const fetchTopEvents = async () => {
+        const { events } = await getEvents();
+        console.log(events);
+        setEvents(events);
+    };
+
+    useEffect(() => {
+        fetchTopEvents();
+    }, []);
+
     return (
         <>
             <section className="w-full">
@@ -40,7 +46,7 @@ export const Home = () => {
                         <b>Top</b> <span>Selling</span>
                     </h2>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
-                        <TopSelligCards />
+                        <TopSelligCards events={events} />
                     </div>
                 </section>
                 <section className="w-full md:w-1/2 mt-10">
@@ -54,7 +60,7 @@ export const Home = () => {
                         </p>
                     </div>
                     <div className="flex justify-center md:justify-start gap-3 mt-2">
-                        <TopSelligCardsFull />
+                        <TopSelligCardsFull events={events} />
                     </div>
                 </section>
             </section>
@@ -62,44 +68,49 @@ export const Home = () => {
     );
 };
 
-const TopSelligCards = () => {
-    return TOP_SELLING_DATA.map((event, i) => (
+const TopSelligCards = ({ events }) => {
+    return events?.slice(0, 4).map((event, i) => (
         <Card
             className="py-4"
             key={i}
         >
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start w-[300px]">
                 <p className="text-tiny uppercase font-bold">
-                    {event.location}
+                    {event.venue.display_location}
                 </p>
-                <small className="text-default-500">{event.date}</small>
-                <h4 className="font-bold text-large">{event.title}</h4>
+                <small className="text-default-500">
+                    {event.datetime_local}
+                </small>
+                <h4 className="font-bold text-large">
+                    {event.performers[0].short_name}
+                </h4>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
+            <CardBody className="overflow-visible py-2 justify-end">
                 <Image
                     isZoomed
                     alt="Card background"
-                    className="object-cover rounded-xl"
-                    src={event.img}
-                    width={270}
+                    className="object-fill rounded-xl"
+                    src={event.performers[0].image}
+                    width={300}
+                    height={200}
                 />
             </CardBody>
         </Card>
     ));
 };
 
-const TopSelligCardsFull = () => {
-    return TOP_SELLING_DATA_2.map((event, i) => (
+const TopSelligCardsFull = ({ events }) => {
+    return events?.slice(4, 7).map((event, i) => (
         <Card
             className="col-span-12 sm:col-span-4"
             key={i}
         >
             <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                 <p className="text-tiny text-white/60 uppercase font-bold">
-                    {event.subtitle}
+                {event.venue.display_location}
                 </p>
                 <h4 className="text-white font-medium text-large">
-                    {event.title}
+                    {event.performers[0].short_name}
                 </h4>
             </CardHeader>
             <Image
@@ -107,7 +118,7 @@ const TopSelligCardsFull = () => {
                 isZoomed
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
-                src={event.img}
+                src={event.performers[0].image}
             />
         </Card>
     ));
