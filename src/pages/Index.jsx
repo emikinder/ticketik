@@ -4,4 +4,5 @@ import { Music } from "./Music";
 import { Sports } from "./Sports";
 import { NotFound } from "./NotFound";
 import { Login } from "./Login";
-export { Home, Login, Art, Music, Sports, NotFound };
+import { Event } from "./Event";
+export { Home, Login, Art, Music, Sports, NotFound, Event };

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import {
+    faTwitter,
+    faInstagram,
+    faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
+import { navbarItemsList } from "./common/navbarItems";
 
 export const Footer = () => {
     return (
@@ -9,45 +14,16 @@ export const Footer = () => {
                 <div className="flex mt-5 md:w-4/12">
                     <div className="w-1/2">
                         <ul>
-                            <li className="pt-2">
-                                <Link className="" to="/">
-                                    Home
-                                </Link>
-                            </li>
-                            <li className="pt-2">
-                                <Link className="" to="/music">
-                                    Music
-                                </Link>
-                            </li>
-                            <li className="pt-2">
-                                <Link className="" to="/sports">
-                                    Sports
-                                </Link>
-                            </li>
-                            <li className="pt-2">
-                                <Link className="" to="/art">
-                                    Art
-                                </Link>
-                            </li>
-                            <li className="pt-2">
-                                <Link className="" to="/specials">
-                                    Specials
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="w-1/2">
-                        <ul>
-                            <li className="pt-2">
-                                <Link className="" to="/">
-                                    About
-                                </Link>
-                            </li>
-                            <li className="pt-2">
-                                <Link className="" to="/music">
-                                    Contact
-                                </Link>
-                            </li>
+                            {navbarItemsList.map((item, i) => (
+                                <li className="pt-2" key={i}>
+                                    <Link
+                                        className=""
+                                        to={item.link}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

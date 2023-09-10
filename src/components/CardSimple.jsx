@@ -1,10 +1,16 @@
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
-const CardSimple = ({ location, date, name, image }) => {
+const CardSimple = ({ location, date, name, image, id }) => {
+    const navigate = useNavigate();
+    const onPressHandler = () => {
+        navigate(`/event/${id}`);
+    };
     return (
         <Card
-            className="py-4"
-            // key={i}
+            isPressable
+            onPress={onPressHandler}
+            className="py-4 cursor-pointer"
         >
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start w-[300px]">
                 <p className="text-tiny uppercase font-bold">{location}</p>

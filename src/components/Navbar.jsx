@@ -11,21 +11,13 @@ import {
 } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
-
-const navbarItemsList = [
-    { name: "Home", link: "/" },
-    { name: "Music", link: "/music" },
-    { name: "Sports", link: "/sports" },
-    { name: "Art", link: "/art" },
-];
+import { navbarItemsList } from "./common/navbarItems";
 
 export default function NavbarUi() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     return (
-        <Navbar
-            onMenuOpenChange={setIsMenuOpen}
-        >
+        <Navbar onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
