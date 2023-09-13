@@ -76,6 +76,7 @@ export const Home = () => {
                                     date={event.datetime_local}
                                     name={event.performers[0].short_name}
                                     image={event.performers[0].image}
+                                    id={event.id}
                                 />
                             ))}
                     </div>

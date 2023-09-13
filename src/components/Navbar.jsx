@@ -12,10 +12,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { navbarItemsList } from "./common/navbarItems";
+import { useNavigate } from "react-router-dom";
 
 export default function NavbarUi() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+    const navigate = useNavigate();
+    const onPressHandler = () => {
+        navigate("/");
+    };
     return (
         <Navbar onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
@@ -23,7 +27,10 @@ export default function NavbarUi() {
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="sm:hidden"
                 />
-                <NavbarBrand className="text-xl hover:text-purple">
+                <NavbarBrand
+                    onClick={onPressHandler}
+                    className="text-xl hover:text-purple"
+                >
                     <FontAwesomeIcon icon={faStar} />
                     <b> TICKET</b>VIBE
                 </NavbarBrand>
