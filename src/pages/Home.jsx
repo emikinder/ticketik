@@ -10,7 +10,7 @@ import { Image } from "@nextui-org/react";
 import { useFetch } from "../api/useFetch";
 
 export const Home = () => {
-    const { data, loading, error } = useFetch();
+    const { data, loading, error } = useFetch("events");
 
     error && <p>{error}</p>;
     loading && <p>Loading...</p>;
@@ -52,6 +52,7 @@ export const Home = () => {
                                     date={event.datetime_local}
                                     name={event.performers[0].short_name}
                                     image={event.performers[0].image}
+                                    id={event.id}
                                 />
                             ))}
                     </div>
@@ -75,6 +76,7 @@ export const Home = () => {
                                     date={event.datetime_local}
                                     name={event.performers[0].short_name}
                                     image={event.performers[0].image}
+                                    id={event.id}
                                 />
                             ))}
                     </div>

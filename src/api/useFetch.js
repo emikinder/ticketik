@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { baseUrl } from "./UtilsAPI";
 
-export function useFetch() {
+export function useFetch(custom) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const url =
-            baseUrl + "events?client_id=" + import.meta.env.VITE_API_CLIENT_ID;
+            baseUrl +
+            custom +
+            "?client_id=" +
+            import.meta.env.VITE_API_CLIENT_ID;
+        console.log(url);
         fetch(url, {
             method: "GET",
             headers: {

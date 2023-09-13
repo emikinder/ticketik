@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
-import { Home, Login, Music, Sports, Art, NotFound } from "./pages";
+import { Home, Login, Music, Sports, Art, Event, NotFound } from "./pages";
 import { NextUIProvider } from "@nextui-org/react";
 import "./App.css";
 import NavbarUi from "./components/Navbar";
@@ -29,6 +29,10 @@ function App() {
                 <Route
                     path="/login"
                     element={<Login />}
+                />
+                <Route
+                    path="/event/:id"
+                    element={<Event />}
                 />
                 <Route
                     path="*"
