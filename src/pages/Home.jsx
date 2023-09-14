@@ -1,11 +1,8 @@
-// import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Input } from "@nextui-org/react";
+import { Input, Image } from "@nextui-org/react";
 import CSGO from "../assets/images/eslcologne.png";
-import CardSimple from "../components/CardSimple";
-import CardFull from "../components/CardFull";
-import { Image } from "@nextui-org/react";
+import CardCustom from "../components/CardCustom";
 
 import { useFetch } from "../api/useFetch";
 
@@ -46,7 +43,7 @@ export const Home = () => {
                     <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
                         {data &&
                             data.events.slice(0, 4).map((event, i) => (
-                                <CardSimple
+                                <CardCustom
                                     key={i}
                                     location={event.venue.display_location}
                                     date={event.datetime_local}
@@ -70,7 +67,8 @@ export const Home = () => {
                     <div className="flex flex-wrap justify-center md:justify-between mt-2">
                         {data &&
                             data.events.slice(4, 7).map((event, i) => (
-                                <CardFull
+                                <CardCustom
+                                    isFull
                                     key={i}
                                     location={event.venue.display_location}
                                     date={event.datetime_local}
