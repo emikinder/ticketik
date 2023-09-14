@@ -4,7 +4,6 @@ import {
     NavbarBrand,
     NavbarContent,
     NavbarItem,
-    Link,
     NavbarMenuToggle,
     NavbarMenu,
     NavbarMenuItem,
@@ -12,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { navbarItemsList } from "./common/navbarItems";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function NavbarUi() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
