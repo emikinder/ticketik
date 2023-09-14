@@ -65,7 +65,7 @@ const NavbarItemsMenu = () => {
             <Link
                 color="foreground"
                 className="text-2xl"
-                href={item.link}
+                to={item.link}
             >
                 {item.name}
             </Link>
@@ -83,7 +83,7 @@ const NavbarItems = () => {
             <Link
                 color="foreground"
                 className="text-lg hover:text-purple"
-                href={item.link}
+                to={item.link}
             >
                 {item.name}
             </Link>
