@@ -15,7 +15,7 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start w-[300px]">
                 <p className="text-tiny uppercase font-bold">{location}</p>
                 <small className="text-default-500">{date}</small>
-                <h4 className="font-bold text-large">{name}</h4>
+                <h4 className="font-bold text-large text-left">{name}</h4>
             </CardHeader>
             <CardBody className="overflow-visible py-2 justify-end">
                 <Image
@@ -40,7 +40,7 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
                 <p className="text-tiny text-white/60 uppercase font-bold">
                     {location}
                 </p>
-                <h4 className="text-white font-medium text-large">{name}</h4>
+                <h4 className="text-white font-medium text-large text-left">{name}</h4>
             </CardHeader>
             <Image
                 removeWrapper

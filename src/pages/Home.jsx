@@ -1,16 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Input, Image } from "@nextui-org/react";
+import { Input, Image, Spinner } from "@nextui-org/react";
 import CSGO from "../assets/images/eslcologne.png";
 import CardCustom from "../components/CardCustom";
 
 import { useFetch } from "../api/useFetch";
+import { Recents } from "../components/Recents";
+import Sports from "../components/Sports";
 
 export const Home = () => {
-    const { data, loading, error } = useFetch("events");
-
-    error && <p>{error}</p>;
-    loading && <p>Loading...</p>;
+    const { data, loading } = useFetch("events?");
     return (
         <>
             <section className="w-full">
@@ -41,6 +40,12 @@ export const Home = () => {
                         <b>Top</b> <span>Selling</span>
                     </h2>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
+                        {loading && (
+                            <Spinner
+                                className="my-10"
+                                color="secondary"
+                            />
+                        )}
                         {data &&
                             data.events.slice(0, 4).map((event, i) => (
                                 <CardCustom
@@ -54,32 +59,9 @@ export const Home = () => {
                             ))}
                     </div>
                 </section>
-                <section className="w-full md:w-1/2 mt-10">
-                    <div className="bg-purple text-white px-5 py-4 md:rounded-xl">
-                        <p className="text-3xl">All eSports Events here!</p>
-                        <p className="mt-3">
-                            Experience the exhilaration of live gaming
-                            tournaments and events, secure your spot, and join
-                            the passionate eSports community. Get your tickets
-                            now!
-                        </p>
-                    </div>
-                    <div className="flex flex-wrap justify-center md:justify-between mt-2">
-                        {data &&
-                            data.events.slice(4, 7).map((event, i) => (
-                                <CardCustom
-                                    isFull
-                                    key={i}
-                                    location={event.venue.display_location}
-                                    date={event.datetime_local}
-                                    name={event.performers[0].short_name}
-                                    image={event.performers[0].image}
-                                    id={event.id}
-                                />
-                            ))}
-                    </div>
-                </section>
+                <Sports />
             </section>
+            <Recents />
         </>
     );
 };

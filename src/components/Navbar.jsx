@@ -28,7 +28,7 @@ export default function NavbarUi() {
                 />
                 <NavbarBrand
                     onClick={onPressHandler}
-                    className="text-xl hover:text-purple"
+                    className="cursor-pointer text-xl hover:text-purple"
                 >
                     <FontAwesomeIcon icon={faStar} />
                     <b> TICKET</b>VIBE
