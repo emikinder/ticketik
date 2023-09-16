@@ -10,7 +10,7 @@ export function useFetch(custom) {
         const url =
             baseUrl +
             custom +
-            "?client_id=" +
+            "client_id=" +
             import.meta.env.VITE_API_CLIENT_ID;
         console.log(url);
         fetch(url, {
