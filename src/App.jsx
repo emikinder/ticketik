@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import { NextUIProvider } from "@nextui-org/react";
 import "./App.css";
 import NavbarUi from "./components/Navbar";
+import { Contact } from "./pages/Contact";
 
 function App() {
     return (
@@ -29,6 +30,10 @@ function App() {
                 <Route
                     path="/login"
                     element={<Login />}
+                />
+                <Route
+                    path="/contact"
+                    element={<Contact />}
                 />
                 <Route
                     path="/event/:id"

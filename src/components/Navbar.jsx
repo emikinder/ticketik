@@ -43,7 +43,7 @@ export default function NavbarUi() {
             <NavbarContent justify="end">
                 <NavbarItem className="lg:flex">
                     <Link
-                        href="/login"
+                        to="/login"
                         color="foreground"
                         className="md:w-1/5 md:text-right hover:text-purple"
                     >

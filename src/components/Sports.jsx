@@ -14,7 +14,7 @@ const Sports = () => {
                     community. Get your tickets now!
                 </p>
             </div>
-            <div className="flex flex-wrap justify-center md:justify-between mt-2">
+            <div className="flex flex-wrap justify-center md:justify-between gap-3 mt-2">
                 {loading && (
                     <Spinner
                         className="my-10"

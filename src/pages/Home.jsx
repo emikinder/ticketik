@@ -47,7 +47,7 @@ export const Home = () => {
                             />
                         )}
                         {data &&
-                            data.events.slice(0, 4).map((event, i) => (
+                            data.events.slice(0, 6).map((event, i) => (
                                 <CardCustom
                                     key={i}
                                     location={event.venue.display_location}
