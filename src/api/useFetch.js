@@ -10,14 +10,14 @@ export function useFetch(custom) {
         const url =
             baseUrl +
             custom +
-            "apikey=" +
-            import.meta.env.VITE_API_NEW_CLIENT_ID;
+            "client_id=" +
+            import.meta.env.VITE_API_CLIENT_ID;
 
         fetch(url, {
             method: "GET",
-            // headers: {
-            //     "Content-Type": "application/json",
-            // },
+            headers: {
+                "Content-Type": "application/json",
+            },
         })
             .then((response) => response.json())
             .then((json) => setData(json))
