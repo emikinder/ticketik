@@ -12,9 +12,9 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
         <Card
             isPressable
             onPress={onPressHandler}
-            className="py-4 cursor-pointer"
+            className="py-4 cursor-pointer md:w-[45%] lg:w-[30%]"
         >
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start w-[300px]">
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                 <p className="text-tiny uppercase font-bold">{location}</p>
                 <small className="text-default-500">{formatDate(date)}</small>
                 <h4 className="font-bold text-large text-left">{name}</h4>
@@ -34,7 +34,7 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
         <Card
             isPressable
             onPress={onPressHandler}
-            className="w-11/12 mt-2 md:w-[32.5%] md:mt-0"
+            className="mt-2 md:w-[45%] md:mt-0 lg:w-[30%]"
             onClick={() => console.log(id)}
         >
             <CardHeader className="absolute z-10 top-1 flex-col !items-start">
