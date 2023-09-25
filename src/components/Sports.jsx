@@ -3,7 +3,18 @@ import { Spinner } from "@nextui-org/react";
 import CardCustom from "../components/CardCustom";
 
 const Sports = () => {
-    const { data, loading } = useFetch("events?taxonomies.name=sports&");
+    const { data, loading } = useFetch(
+        "events.json?keyword=cs2&size=3&sort=random&"
+    );
+
+    if (loading)
+        <Spinner
+            className="my-10"
+            color="secondary"
+        />;
+
+        const events = data && data._embedded.events;
+
     return (
         <section className="w-full md:w-1/2 mt-10">
             <div className="bg-purple text-white px-5 py-4 md:rounded-xl">
@@ -15,21 +26,15 @@ const Sports = () => {
                 </p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-between mt-2">
-                {loading && (
-                    <Spinner
-                        className="my-10"
-                        color="secondary"
-                    />
-                )}
-                {data &&
-                    data.events.slice(4, 7).map((event, i) => (
+                {events &&
+                    events.map((event, i) => (
                         <CardCustom
                             isFull
                             key={i}
-                            location={event.venue.display_location}
-                            date={event.datetime_local}
-                            name={event.performers[0].short_name}
-                            image={event.performers[0].image}
+                            name={event.name}
+                            date={event.dates.start.dateTime}
+                            location={event._embedded.venues[0].name}
+                            image={event.images[1].url}
                             id={event.id}
                         />
                     ))}

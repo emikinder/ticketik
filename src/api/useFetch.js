@@ -10,20 +10,19 @@ export function useFetch(custom) {
         const url =
             baseUrl +
             custom +
-            "client_id=" +
-            import.meta.env.VITE_API_CLIENT_ID;
-        console.log(url);
+            "apikey=" +
+            import.meta.env.VITE_API_NEW_CLIENT_ID;
+
         fetch(url, {
             method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            // headers: {
+            //     "Content-Type": "application/json",
+            // },
         })
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
     }, []);
-
     return { data, loading, error };
 }
