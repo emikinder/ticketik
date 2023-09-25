@@ -4,6 +4,7 @@ import { Input, Image } from "@nextui-org/react";
 import CSGO from "../assets/images/eslcologne.png";
 
 import { Recents } from "../components/Recents";
+import { Categories } from "../components/Categories";
 import TopSellers from "../components/TopSellers";
 import Sports from "../components/Sports";
 
@@ -33,12 +34,11 @@ export const Home = () => {
                 </div>
             </section>
             <section className="flex flex-col py-10 justify-center md:flex-row md:justify-around md:m-auto md:w-9/12">
-                <section className="w-full md:w-1/2">
-                    <TopSellers />
-                </section>
+                <TopSellers />
                 <Sports />
             </section>
             <Recents />
+            <Categories />
         </>
     );
 };
