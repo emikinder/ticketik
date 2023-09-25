@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../api/useFetch";
 import { Button, Image, Spinner } from "@nextui-org/react";
 import { formatDate } from "../components/common/date";
-
 import { useEffect } from "react";
 
 export const Event = () => {
@@ -14,13 +13,16 @@ export const Event = () => {
         if (recents === null) {
             localStorage.setItem(
                 "recents",
-                JSON.stringify([{ id: data.id, title: data.name }])
+                JSON.stringify([{ id: Number(id), title: data.short_title }])
             );
         } else {
-            const filter = recents.filter((recent) => recent.id !== id);
+            const filter = recents.filter((recent) => recent.id !== Number(id));
             localStorage.setItem(
                 "recents",
-                JSON.stringify([...filter, { id: data.id, title: data.name }])
+                JSON.stringify([
+                    ...filter,
+                    { id: Number(id), title: data.short_title },
+                ])
             );
         }
     };
@@ -42,17 +44,17 @@ export const Event = () => {
                 <>
                     <div className="w-full px-3 md:w-1/4">
                         <Image
-                            src={data.images[7].url}
+                            src={data.performers[0].image}
                             alt=""
                             width="350"
                         />
                     </div>
                     <div className="w-full px-3 flex flex-col justify-between">
                         <section>
-                            <h1 className="text-3xl text-bold">{data.name}</h1>
-                            <p>{data._embedded.venues[0].name}</p>
+                            <h1 className="text-3xl text-bold">{data.title}</h1>
+                            <p>{data.venue.display_location}</p>
                             <p className="">
-                                {formatDate(data.dates.start.localDate)}
+                                {formatDate(data.datetime_local)}
                             </p>
 
                             <p>{data.description}</p>

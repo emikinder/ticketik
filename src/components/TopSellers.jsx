@@ -3,7 +3,7 @@ import { Spinner } from "@nextui-org/react";
 import CardCustom from "./CardCustom";
 
 const TopSellers = () => {
-    const { data, loading } = useFetch("events.json?size=4&sort=relevance,desc&");
+    const { data, loading } = useFetch("events?per_page=4&");
 
     if (loading)
         <Spinner
@@ -11,21 +11,20 @@ const TopSellers = () => {
             color="secondary"
         />;
 
-    const events = data && data._embedded.events;
     return (
         <>
             <h2 className="text-2xl text-center md:text-left">
                 <b>Top</b> <span>Selling</span>
             </h2>
             <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
-                {events &&
-                    events.map((event, i) => (
+                {data &&
+                    data.events.map((event, i) => (
                         <CardCustom
                             key={i}
-                            name={event.name}
-                            date={event.dates.start.dateTime}
-                            location={event.products[0].name}
-                            image={event.images[5].url}
+                            name={event.performers[0].name}
+                            date={event.datetime_local}
+                            location={event.venue.display_location}
+                            image={event.performers[0].image}
                             id={event.id}
                         />
                     ))}
