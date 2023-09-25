@@ -12,7 +12,7 @@ const TopSellers = () => {
         />;
 
     return (
-        <>
+        <section className="w-full md:w-1/2">
             <h2 className="text-2xl text-center md:text-left">
                 <b>Top</b> <span>Selling</span>
             </h2>
@@ -29,7 +29,7 @@ const TopSellers = () => {
                         />
                     ))}
             </div>
-        </>
+        </section>
     );
 };
 
