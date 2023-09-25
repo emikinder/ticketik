@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../api/useFetch";
 import { Button, Image, Spinner } from "@nextui-org/react";
+import { formatDate } from "../components/common/date";
 
 import { useEffect } from "react";
 
@@ -8,60 +9,50 @@ export const Event = () => {
     let { id } = useParams();
     const { data, loading } = useFetch(`events/${id}?`);
 
-    const formatDate = (date) => {
-        const newDate = new Date(date);
-        return newDate.toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-        });
-    };
-
-    useEffect(() => {
-        if (data === null) return;
+    const createRecents = () => {
         const recents = JSON.parse(localStorage.getItem("recents"));
         if (recents === null) {
             localStorage.setItem(
                 "recents",
-                JSON.stringify([{ id: Number(id), title: data.short_title }])
+                JSON.stringify([{ id: data.id, title: data.name }])
             );
         } else {
-            const filter = recents.filter((recent) => recent.id !== Number(id));
+            const filter = recents.filter((recent) => recent.id !== id);
             localStorage.setItem(
                 "recents",
-                JSON.stringify([
-                    ...filter,
-                    { id: Number(id), title: data.short_title },
-                ])
+                JSON.stringify([...filter, { id: data.id, title: data.name }])
             );
         }
-    }, [data, id]);
+    };
 
-    console.log(data);
+    useEffect(() => {
+        if (data === null) return;
+        createRecents();
+    });
+
+    if (loading)
+        <Spinner
+            className="my-10"
+            color="secondary"
+        />;
 
     return (
         <section className="flex flex-col w-full md:w-10/12 md:flex-row md:m-auto md:my-20 gap-3">
-            {loading && (
-                <Spinner
-                    className="my-10"
-                    color="secondary"
-                />
-            )}
             {data && (
                 <>
                     <div className="w-full px-3 md:w-1/4">
                         <Image
-                            src={data.performers[0].image}
+                            src={data.images[7].url}
                             alt=""
                             width="350"
                         />
                     </div>
                     <div className="w-full px-3 flex flex-col justify-between">
                         <section>
-                            <h1 className="text-3xl text-bold">{data.title}</h1>
-                            <p>{data.venue.display_location}</p>
+                            <h1 className="text-3xl text-bold">{data.name}</h1>
+                            <p>{data._embedded.venues[0].name}</p>
                             <p className="">
-                                {formatDate(data.datetime_local)}
+                                {formatDate(data.dates.start.localDate)}
                             </p>
 
                             <p>{data.description}</p>

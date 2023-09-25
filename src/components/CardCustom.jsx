@@ -1,11 +1,13 @@
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../components/common/date";
 
 const CardCustom = ({ isFull, location, date, name, image, id }) => {
     const navigate = useNavigate();
     const onPressHandler = () => {
         navigate(`/event/${id}`);
     };
+
     const simple = (
         <Card
             isPressable
@@ -14,8 +16,8 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
         >
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                 <p className="text-tiny uppercase font-bold">{location}</p>
-                <small className="text-default-500">{date}</small>
-                <p className="font-bold text-large text-left w-[80%]">{name}</p>
+                <small className="text-default-500">{formatDate(date)}</small>
+                <h4 className="font-bold text-large text-left">{name}</h4>
             </CardHeader>
             <CardBody className="overflow-visible py-2 justify-end">
                 <Image
@@ -23,7 +25,7 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
                     alt="Card background"
                     className="object-fill rounded-xl"
                     src={image}
-                    width={250}
+                    width={300}
                 />
             </CardBody>
         </Card>
@@ -39,7 +41,9 @@ const CardCustom = ({ isFull, location, date, name, image, id }) => {
                 <p className="text-tiny text-white/60 uppercase font-bold">
                     {location}
                 </p>
-                <h4 className="text-white font-medium text-large text-left">{name}</h4>
+                <h4 className="text-white font-medium text-large text-left">
+                    {name}
+                </h4>
             </CardHeader>
             <Image
                 removeWrapper
