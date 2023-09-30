@@ -3,7 +3,7 @@ import { Spinner } from "@nextui-org/react";
 import CardCustom from "./CardCustom";
 
 const TopSellers = () => {
-    const { data, loading } = useFetch("events?per_page=4&");
+    const { data, loading } = useFetch("events?per_page=6&");
 
     if (loading)
         <Spinner
@@ -26,6 +26,7 @@ const TopSellers = () => {
                             location={event.venue.display_location}
                             image={event.performers[0].image}
                             id={event.id}
+                            isTrending={i <= 2}
                         />
                     ))}
             </div>

@@ -1,7 +1,7 @@
 import {
     faMusic,
     faFutbol,
-    faPalette,
+    faMasksTheater,
 } from "@fortawesome/free-solid-svg-icons";
 import { Category } from "./Category";
 
@@ -19,8 +19,8 @@ export const Categories = () => {
                         name="sports"
                     />
                     <Category
-                        icon={faPalette}
-                        name="art"
+                        icon={faMasksTheater}
+                        name="comedy"
                     />
                 </div>
             </section>

@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Login, Music, Sports, Art, Event, NotFound } from "./pages";
+import { Home, Login, Music, Sports, Comedy, Event, NotFound } from "./pages";
 import { Footer } from "./components/Footer";
 import { NextUIProvider } from "@nextui-org/react";
 import "./App.css";
@@ -24,8 +24,8 @@ function App() {
                     element={<Sports />}
                 />
                 <Route
-                    path="/art"
-                    element={<Art />}
+                    path="/comedy"
+                    element={<Comedy />}
                 />
                 <Route
                     path="/login"
