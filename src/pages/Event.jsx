@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../api/useFetch";
-import { Button, Image, Spinner, Chip } from "@nextui-org/react";
+import { Button, Image, Spinner } from "@nextui-org/react";
 import { formatDate } from "../components/common/date";
 import { useEffect } from "react";
 
@@ -64,14 +64,14 @@ export const Event = () => {
                                 {formatDate(data.datetime_local)}
                             </p>
 
-                            <Chip
+                            {/* <Chip
                                 color="secondary"
                                 variant="bordered"
                                 size="sm"
                                 className="capitalize"
                             >
                                 {data.type}
-                            </Chip>
+                            </Chip> */}
                         </section>
                         <Button
                             className="w-full mb-6 mt-10 md:m-0 md:w-[130px]"
