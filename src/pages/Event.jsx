@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../api/useFetch";
-import { Button, Image, Spinner } from "@nextui-org/react";
+import { Button, Image, Spinner, Chip } from "@nextui-org/react";
 import { formatDate } from "../components/common/date";
 import { useEffect } from "react";
 
@@ -38,8 +38,12 @@ export const Event = () => {
             color="secondary"
         />;
 
+    const onPressHandler = (url) => {
+        window.open(url, "_blank");
+    };
+
     return (
-        <section className="flex flex-col w-full md:w-10/12 md:flex-row md:m-auto md:my-20 gap-3">
+        <section className="flex flex-col w-full md:w-10/12 md:flex-row md:m-auto md:my-28 gap-3">
             {data && (
                 <>
                     <div className="w-full px-3 md:w-1/4">
@@ -52,17 +56,27 @@ export const Event = () => {
                     <div className="w-full px-3 flex flex-col justify-between">
                         <section>
                             <h1 className="text-3xl text-bold">{data.title}</h1>
-                            <p>{data.venue.display_location}</p>
+                            <p>
+                                {data.venue.name} -{" "}
+                                {data.venue.display_location}
+                            </p>
                             <p className="">
                                 {formatDate(data.datetime_local)}
                             </p>
 
-                            <p>{data.description}</p>
+                            <Chip
+                                color="secondary"
+                                variant="bordered"
+                                size="sm"
+                                className="capitalize"
+                            >
+                                {data.type}
+                            </Chip>
                         </section>
                         <Button
                             className="w-full mb-6 mt-10 md:m-0 md:w-[130px]"
                             color="secondary"
-                            href={data.url}
+                            onPress={() => onPressHandler(data.url)}
                             auto
                         >
                             Buy Tickets

@@ -2,15 +2,15 @@ import { Image, Chip } from "@nextui-org/react";
 import { useFetch } from "../api/useFetch";
 import { Spinner } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import PortadaSports from "../assets/images/portada-sports.jpg";
+import PortadaComedy from "../assets/images/portada-comedy.jpg";
 import CardCustom from "../components/CardCustom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic, faMasksTheater } from "@fortawesome/free-solid-svg-icons";
+import { faMusic, faFutbol } from "@fortawesome/free-solid-svg-icons";
 
-export const Sports = () => {
+export const Comedy = () => {
     const navigate = useNavigate();
     const { data, loading } = useFetch(
-        "events?per_page=9&taxonomies.name=sports&"
+        "events?per_page=9&taxonomies.name=comedy&"
     );
 
     window.scrollTo(0, 0);
@@ -24,15 +24,15 @@ export const Sports = () => {
     return (
         <section className="">
             <Image
-                src={PortadaSports}
-                alt="Sports"
+                src={PortadaComedy}
+                alt="Comedy"
                 width="100%"
                 layout="responsive"
                 radius="none"
             />
             <div className="p-6 md:m-auto md:w-9/12">
                 <h1 className="text-3xl">
-                    <strong>Sports</strong> events & games
+                    <strong>Comedy</strong> events & laughs
                 </h1>
                 <div className="flex flex-wrap justify-around gap-3 mt-5">
                     {data &&
@@ -44,7 +44,7 @@ export const Sports = () => {
                                 location={event.venue.display_location}
                                 image={event.performers[0].image}
                                 id={event.id}
-                                isTrending={i <= 3}
+                                isTrending={i <= 2}
                             />
                         ))}
                 </div>
@@ -64,10 +64,10 @@ export const Sports = () => {
                             size="md"
                             color="secondary"
                             className="cursor-pointer"
-                            onClick={() => navigate("/comedy")}
-                            startContent={<FontAwesomeIcon icon={faMasksTheater} />}
+                            onClick={() => navigate("/sports")}
+                            startContent={<FontAwesomeIcon icon={faFutbol} />}
                         >
-                            Comedy
+                            Sports
                         </Chip>
                     </div>
                 </div>
